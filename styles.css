@@ -1,0 +1,48 @@
+#sideBar {
+    height: 30%; 
+    width: 250px; /* Set the width of the sidebar */
+    position: absolute; /* Fixed Sidebar (stay in place on scroll) */
+    z-index: 1; /* Stay on top */
+    top: 10em; /* Stay at the top */
+    left: 0;
+    background-color: grey; /* Black */
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 20px;
+}
+
+#inputContainer {
+    background-color: lightgray;
+
+}
+
+#shapeContainer{
+left: 20em;
+background-color: grey;
+width: 600px;
+height: 600px;
+position: relative;
+}
+body{
+    background-color: lightgray;
+}
+h1{
+    font-size : 20px;
+}
+
+
+.shape {
+    background-color: blue;
+    position: absolute;
+}
+
+.circle{
+    -moz-border-radius: 50%;
+	-webkit-border-radius: 50%;
+	border-radius: 50%;
+}
+
+.triangle{
+    background-color: grey;
+}
+
+
