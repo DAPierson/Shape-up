@@ -45,30 +45,32 @@ class Shape {
         this.shape = document.createElement('div');
         sContainer.appendChild(this.shape);
         this.shape.classList.add('shape');
-        this.shape.addEventListener('click', () => {
-            this.values();
-        })
-        this.location();
+        this.shape.style.width = `${width}px`;
+        this.shape.style.height = `${height}px`;
         this.width = width;
         this.height = height;
         this.radius = radius;
         this.area = area;
         this.perimeter = perimeter;
         this.name = name;
+        this.location();
 
-
-
+        this.shape.addEventListener('click', () => {
+            this.values();
+        })
+        this.shape.addEventListener('dblclick', () => {
+            this.del();
+        })
 
     }
-
-
     location() {
-        let xVal = randomVal(0, 550);
-        let yVal = randomVal(0, 550);
+        let xVal = randomVal(0, 600-this.height);
+        let yVal = randomVal(0, 600-this.width);
+        
         this.shape.style.left = `${xVal}px`;
         this.shape.style.top = `${yVal}px`;
+       
     }
-
     values() {
         nValue.innerText = `Shape Name: ${this.name}`;
         hValue.innerText = `Height: ${this.height}`;
@@ -76,49 +78,37 @@ class Shape {
         rValue.innerText = `Radius: ${this.radius}`;
         pValue.innerText = `Perimeter: ${this.perimeter}`;
         aValue.innerText = `Area: ${this.area}`;
-
-
     }
-
-
-
+    del() {
+        sContainer.removeChild(this.shape);
+    }
 }
-
-
 class Square extends Shape {
     constructor(width, height, perimeter, area, name) {
         super(width, height, perimeter, area, name);
-        this.shape.style.width = `${width}px`;
-        this.shape.style.height = `${height}px`;
+        this.shape.classList.add('square');
     }
 }
-
 class Rectangle extends Shape {
     constructor(width, height, perimeter, area, name) {
         super(width, height, perimeter, area, name);
-        this.shape.style.width = `${width}px`;
-        this.shape.style.height = `${height}px`;
+        this.shape.classList.add('rectangle');
     }
 }
-
 class Circle extends Shape {
     constructor(width, height, perimeter, area, name, radius) {
         super(width, height, perimeter, area, name, radius);
-        this.shape.style.width = `${width}px`;
-        this.shape.style.height = `${height}px`;
         this.shape.classList.add('circle');
     }
 }
-
 class Triangle extends Shape {
     constructor(width, height, perimeter, area, name) {
         super(width, height, perimeter, area, name);
-        this.shape.style.borderBottom = `${width}px solid blue`;
-       // this.shape.style.borderLeft = `${height / 2}px solid transparent`;
+        this.shape.style.width = 0;
+        this.shape.style.height = 0;
+        this.shape.style.borderBottom = `${width}px solid yellow`;
         this.shape.style.borderRight = `${height}px solid transparent`;
         this.shape.classList.add('triangle');
-       
-        
     }
 }
 cSquare.addEventListener('click', function () {
@@ -129,9 +119,7 @@ cSquare.addEventListener('click', function () {
     let name = 'Square';
 
     new Square(width, height, perimeter, area, name);
-
 })
-
 cRectangle.addEventListener('click', function () {
     let width = rWidth.value;
     let height = rHeight.value;
@@ -140,9 +128,7 @@ cRectangle.addEventListener('click', function () {
     let name = 'Rectangle';
 
     new Rectangle(width, height, perimeter, area, name);
-
 })
-
 cCircle.addEventListener('click', function () {
     let diameter = cDiameter.value;
     let width = cDiameter.value;
@@ -153,11 +139,10 @@ cCircle.addEventListener('click', function () {
     let name = 'Circle';
     new Circle(width, height, perimeter, area, name, radius)
 })
-
 cTriangle.addEventListener('click', function () {
     let height = tHeight.value;
     let width = tHeight.value;
-    let perimeter = height * 2 + (height* Math.sqrt(2));
+    let perimeter = height * 2 + (height * Math.sqrt(2));
     let area = height * width / 2;
     let name = 'Triangle';
     new Triangle(width, height, perimeter, area, name)

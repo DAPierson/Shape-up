@@ -31,18 +31,32 @@ h1{
 
 
 .shape {
-    background-color: blue;
+
     position: absolute;
 }
 
 .circle{
+    background-color : purple;
     -moz-border-radius: 50%;
 	-webkit-border-radius: 50%;
-	border-radius: 50%;
+    border-radius: 50%;
+    border: solid;
+    border-color: white;
+    border-width: 3px;
+    
 }
 
 .triangle{
     background-color: grey;
+   
+    
 }
 
+.rectangle{
+    background-color: green;
+}
+
+.square{
+    background-color: red;
+}
 
